@@ -28,6 +28,9 @@ div.post{
     border-radius: 40px;
     background-color: rgba(0,200,200,.5);
 }
+p{
+    line-height: 1.5em;
+}
 p.date{
     font-family: tahoma;
 }
