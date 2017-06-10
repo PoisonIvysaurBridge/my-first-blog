@@ -4,9 +4,8 @@
 
 body{
     background-color: lawngreen;
-    /*color: mediumslateblue;*/
+    color: mediumslateblue;
     font-family: 'Aclonica';
-    color: white;
     margin: 0;
 }
 
@@ -38,4 +37,7 @@ p{
 }
 p.date{
     font-family: tahoma;
+}
+div.title{
+    color: #9999FF;
 }
