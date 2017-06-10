@@ -1,0 +1,15 @@
+<! DOCTYP HTML>
+<html>
+<head>
+	{% load staticfiles %}
+	<!--<link href="{%static 'blog/css/bootstrap.min.css'%}" rel="stylesheet">-->
+</head>
+<body>
+	Welcome to Poison Ivy's Blog!!!
+	<form action='/blog/' method='POST'>
+		{% csrf_token %} 
+		{{AuthorForm.as_p}}
+		<input type="submit" name="submit" value="Submit">
+	</form>
+</body>
+</html>

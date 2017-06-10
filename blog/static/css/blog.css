@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Aclonica');
+@import url('https://fonts.googleapis.com/css?family=Tahoma');
+
+body{
+    background-color: lawngreen;
+    color: mediumslateblue;
+    font-family: 'Aclonica';
+    
+}
+
+a{
+    text-decoration: none;
+}
+div.container{
+    margin: 5% 10%;
+}
+div.post{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 40px;
+    background-color: rgba(0,200,200,.5);
+}
