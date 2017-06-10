@@ -3,12 +3,21 @@
     <head>
         <title>Poison Ivy's blog</title>
         {% load staticfiles %}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
 
     <body>
         <div class="page-header">
-            <h1><a href="">Poison Ivy's blog</a></h1>
+            <div id="new">
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
+            <h1 style="color:mediumslateblue;">Poison Ivy's blog</h1>
+            
+        </div>
+            
         </div>
         <div class="container">
             <div class="content">

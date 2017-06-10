@@ -23,12 +23,10 @@ div.page-header{
     margin: 0;
     padding: 20px 20px 20px 40px;
     text-decoration: none;
+    text-align: center;
+    
 }
 
-h1 {
-    font-size: 36;
-    text-align: center;
-}
 div.container{
     margin: 5% 10%;
 }
@@ -44,4 +42,12 @@ div.post{
 
 p.date{
     font-family: tahoma;
+}
+
+#new{
+    float: right;
+}
+
+form.post-form{
+    color: mediumslateblue;
 }
