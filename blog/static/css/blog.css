@@ -24,7 +24,8 @@ div.page-header{
     padding: 20px 20px 20px 40px;
     text-decoration: none;
 }
-h1 a{
+
+h1 {
     font-size: 36;
     text-align: center;
 }
