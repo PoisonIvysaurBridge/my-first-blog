@@ -44,10 +44,6 @@ p.date, div.date{
     font-family: tahoma;
 }
 
-#new{
-    float: right;
-}
-
 form.post-form{
     color: mediumslateblue;
 }
