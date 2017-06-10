@@ -4,32 +4,37 @@
 
 body{
     background-color: lawngreen;
-    color: mediumslateblue;
+    /*color: mediumslateblue;*/
     font-family: 'Aclonica';
-    
+    color: white;
+    margin: 0;
 }
 
 a{
     text-decoration: none;
 }
-h1{
+.page-header{
     font-family: 'Lobster';
-    font-size: 72;
+    font-size: 36;
+    background-color: #9999FF;
+    margin: 0;
+    padding: 20px 20px 20px 40px;
 }
-h2{
-    font-family: 'Aclonica';
-}
+
 div.container{
     margin: 5% 10%;
 }
+
 div.post{
     margin: 20px;
     padding: 30px;
     border-radius: 40px;
     background-color: rgba(0,200,200,.5);
 }
+
 p{
     line-height: 1.5em;
+    color: white;
 }
 p.date{
     font-family: tahoma;
