@@ -3,8 +3,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 
 body{
+    color: #9999ff;
     background-color: lawngreen;
-    color: mediumslateblue;
     font-family: 'Aclonica';
     margin: 0;
 }
@@ -12,14 +12,22 @@ body{
 a{
     text-decoration: none;
 }
-.page-header{
+
+h2 a{
+    color: white;
+}
+div.page-header{
     font-family: 'Lobster';
     font-size: 36;
     background-color: #9999FF;
     margin: 0;
     padding: 20px 20px 20px 40px;
+    text-decoration: none;
 }
-
+h1 a{
+    font-size: 36;
+    text-align: center;
+}
 div.container{
     margin: 5% 10%;
 }
@@ -29,15 +37,10 @@ div.post{
     padding: 30px;
     border-radius: 40px;
     background-color: rgba(0,200,200,.5);
-}
-
-p{
     line-height: 1.5em;
     color: white;
 }
+
 p.date{
     font-family: tahoma;
-}
-div.title{
-    color: #9999FF;
 }
