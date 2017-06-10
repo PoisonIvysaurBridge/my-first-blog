@@ -40,7 +40,7 @@ div.post{
     color: white;
 }
 
-p.date{
+p.date, div.date{
     font-family: tahoma;
 }
 
