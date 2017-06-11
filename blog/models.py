@@ -2,13 +2,13 @@ from django.db import models
 from django.utils import timezone
 
 # Create your models here.
-'''
+
 class Author(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    pw = models.CharField(max_length=100)
     def __str__(self):
         return 'Post: {} {}'.format(self.last_name,self.first_name)
-'''
+
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)

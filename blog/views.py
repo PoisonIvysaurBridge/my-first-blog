@@ -59,6 +59,17 @@ def post_remove(request, pk):
     post.delete()
     return redirect('post_list')
 
+def register(request):
+    if request.method == "POST":
+        form = AuthorForm(request.POST)
+        if form.is_valid():
+            author = Author(first_name=form.cleaned_data['first_name'], last_name=form.cleaned_data['last_name'])
+            author.save()
+            redirect('login')
+    else:
+        form = AuthorForm()
+    return render(request,'blog/register.html',{'AuthorForm' : form})
+            
 '''
 def index(request):
     

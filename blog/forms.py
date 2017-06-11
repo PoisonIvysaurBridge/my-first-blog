@@ -12,5 +12,5 @@ class PostForm(forms.ModelForm):
     text = forms.CharField(label="Content:")
 '''
 class AuthorForm(forms.Form):
-    first_name = forms.CharField(label="First Name", max_length=100)
-    last_name = forms.CharField(label="Last Name", max_length=100)
+    name = forms.CharField(label="User Name", max_length=100)
+    pw = forms.CharField(label="Password", widget=forms.PasswordInput)

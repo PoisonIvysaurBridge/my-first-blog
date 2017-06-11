@@ -1,0 +1,33 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<style>
+    h3, a{
+        color: mediumslateblue;
+        text-align: center;
+        border-radius: 10px;
+    }
+    div.outer{
+        margin: 1% 30%;
+        padding: 30px;
+        border-radius: 40px;
+        background-color: rgba(0,200,200,.5);
+    }
+    input, a{
+        border-radius: 10px;
+    }
+</style>
+    <div class="outer">
+        <div align="center">
+            <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %} 
+                <h3>{{AuthorForm.as_p}}</h3>
+            </form>
+            <a class="btn btn-default" href="{% url 'login' %}" 
+                style="border-radius:10px; color:mediumslateblue;">Register</a>
+        </div>
+        {% if not form.is_valid %}
+            <h3>Please fill out all credentials.</h3>
+        {% endif %}
+    </div>
+{% endblock %}
