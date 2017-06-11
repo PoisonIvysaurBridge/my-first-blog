@@ -53,3 +53,8 @@ form.post-form{
     font-size: 20pt;
     margin-right: 20px;
 }
+
+.comment {
+    color: white;
+    margin: 20px 0px 20px 20px;
+}
