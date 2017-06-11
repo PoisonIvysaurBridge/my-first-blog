@@ -2,13 +2,13 @@
 
 {% block content %}
 <style>
-    h3, a,p{
+    h3, h4, a,p{
         color: mediumslateblue;
         text-align: center;
         border-radius: 10px;
     }
     div.outer{
-        margin: 0 30%;
+        margin: -1% 30%;
         padding: 30px;
         border-radius: 40px;
         background-color: rgba(0,200,200,.5);
@@ -19,21 +19,22 @@
 </style>
     <div class="outer">
         {% if form.errors %}
-            <p>Your username and password didn't match. Please try again.</p>
+            <p style="color:red;">Your username and password didn't match. Please try again.</p>
         {% endif %}
         <div align="center">
             <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
-                <h2 style="color:mediumslateblue;">USER LOGIN</h2>
-                <h3>{{ form.username.label_tag }}</h3>
-                <h3>{{ form.username }}<h3>
-                <h3>{{ form.password.label_tag }}</h3>
-                <h3>{{ form.password }}<h3><br>
+                <h2 style="color:mediumslateblue;">User Login</h2><hr>
+                <h4>{{ form.username.label_tag }}</h4>
+                <h4>{{ form.username }}<h4>
+                <h4>{{ form.password.label_tag }}</h4>
+                <h4>{{ form.password }}<h4>
                 <input type="submit" value="Login" />
-                <input type="hidden" name="next" value="{{ next }}" />
+                <!--<input type="hidden" name="next" value="{{ next }}" />-->
             </form>
+            <hr>OR
             <a class="btn btn-default" href="{% url 'register' %}" 
-                style="border-radius:10px; color:mediumslateblue;">Sign Up</a>
+                style="border-radius:10px; color:mediumslateblue;">Sign Up!</a>
         </div>
     </div>
 {% endblock %}
