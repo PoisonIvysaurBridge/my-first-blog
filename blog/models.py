@@ -7,7 +7,7 @@ class Author(models.Model):
     name = models.CharField(max_length=100)
     pw = models.CharField(max_length=100)
     def __str__(self):
-        return 'Post: {} {}'.format(self.last_name,self.first_name)
+        return self.name
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')

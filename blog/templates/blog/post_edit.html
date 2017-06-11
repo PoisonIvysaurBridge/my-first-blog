@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+<a class="btn btn-default" href="{% url 'post_list' %}">Home</a>
     <h1 style="color:mediumslateblue;">New post</h1>
     <form method="POST" class="post-form">
         {% csrf_token %}

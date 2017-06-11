@@ -13,4 +13,12 @@ class PostForm(forms.ModelForm):
 '''
 class AuthorForm(forms.Form):
     name = forms.CharField(label="User Name", max_length=100)
-    pw = forms.CharField(label="Password", widget=forms.PasswordInput)
+    pw = forms.CharField(label="Password", min_length=8, widget=forms.PasswordInput)
+
+class UserForm(forms.ModelForm):
+    
+    class Meta:
+        model = User
+        fields = ('username',)
+    
+    password = forms.CharField(label="Password", min_length=8, widget=forms.PasswordInput)

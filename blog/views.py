@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .forms import AuthorForm, PostForm
-from .models import Post #, Author
+from .forms import *
+from django.contrib.auth import login
+from django.http import HttpResponseRedirect
+from .models import Post, Author
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 # Create your views here.
 
 def post_list(request):
@@ -61,15 +64,23 @@ def post_remove(request, pk):
 
 def register(request):
     if request.method == "POST":
-        form = AuthorForm(request.POST)
+        #form = AuthorForm(request.POST)
+        form = UserForm(request.POST)
         if form.is_valid():
-            author = Author(first_name=form.cleaned_data['first_name'], last_name=form.cleaned_data['last_name'])
+            new_user = User.objects.create_user(**form.cleaned_data)
+            #login(new_user,new_user.password)
+            # redirect, or however you want to get to the main view
+            return redirect('login')
+            '''
+            user = User(username=form.cleaned_data['name'], password=form.cleaned_data['pw'])
+            user.save()
+            author = Author(name=form.cleaned_data['name'], pw=form.cleaned_data['pw'])
             author.save()
-            redirect('login')
+            return redirect('login')'''
     else:
-        form = AuthorForm()
-    return render(request,'blog/register.html',{'AuthorForm' : form})
-            
+        form = UserForm()
+    return render(request,'registration/register.html',{'UserForm' : form})
+   
 '''
 def index(request):
     
