@@ -12,6 +12,26 @@ def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
+def post_sort(request):
+    if request.method == "POST":
+        if request.POST['sort']=="author":
+            posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('author')
+        elif request.POST['sort']=="title":
+            posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('title')
+        elif request.POST['sort']=="new":
+            posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        elif request.POST['sort']=="old":
+            posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+        else:
+            posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        return render(request, 'blog/post_list.html', {'posts': posts})
+    else:
+        return render(request, 'blog/post_list.html', {'posts': posts})
+'''
+def post_filter(request,input):
+    posts = Post.objects.filter(input=title).order_by('-published_date')
+    return render(request, 'blog/post_list.html', {'posts': posts})
+'''
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
