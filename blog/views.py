@@ -31,15 +31,27 @@ def post_filter(request):
     posts=[]
     
     if request.method == "POST":
-        keyword = request.POST['filter'].upper()
+        keyword = request.POST['search'].upper()
+        filterby = request.POST['filterby']
         unfiltered = Post.objects.all()
-        
-        for i in unfiltered:
-            if (i.author.username.upper().find(keyword) > -1 or 
-                i.title.upper().find(keyword) > -1 or
-                i.text.upper().find(keyword) > -1):
-                posts.append(i)
-           
+        if(filterby == "author"):
+            for i in unfiltered:
+                if (i.author.username.upper().find(keyword) > -1):
+                    posts.append(i)
+        elif (filterby == "title"):
+            for i in unfiltered:
+                if (i.title.upper().find(keyword) > -1):
+                    posts.append(i)
+        elif (filterby == "text"):
+            for i in unfiltered:
+                if (i.text.upper().find(keyword) > -1):
+                    posts.append(i)
+        else:
+            for i in unfiltered:
+                if (i.author.username.upper().find(keyword) > -1 or
+                    i.title.upper().find(keyword) > -1 or
+                    i.text.upper().find(keyword) > -1):
+                    posts.append(i)
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, pk):

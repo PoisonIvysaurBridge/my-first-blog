@@ -18,8 +18,16 @@
         {% csrf_token %}
         <input class="button" type="submit"  value="Search" 
             style="border-radius:20px; margin:0 10px;padding:8px;color:mediumslateblue;float:right;">
-        <input type="text" id="myInput" name="filter" placeholder="Search posts..." size="20" 
-            style="border-radius: 20px; padding: 8px; font-size: 16;float:right;">
+
+        <select name="filterby" style="border-radius: 20px; padding: 8px; font-size: 16;float:right;">
+            <option value="default">Filter by</option>
+            <option value="author">Author</option>
+            <option value="title">Title</option>
+            <option value="text">Content</option>
+        </select>
+
+        <input type="text" id="myInput" name="search" placeholder="Search posts..." size="20" 
+            style="border-radius: 20px; margin:0 10px;padding: 8px; font-size: 16;float:right;">
     </form>
     <br><br>
     
