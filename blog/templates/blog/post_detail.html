@@ -25,23 +25,27 @@
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
     </div>
-    <hr>
-    <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
-    {% for comment in post.comments.all %}
-        <div class="comment" style="color:white;">
-            <div class="date" style="color:white;">
-                {{ comment.created_date }}
-            <!--
-                {% if not comment.approved_comment and user == post.author %}
-                    <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                    <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
-                {% endif %}
-            -->
+    {% if user.is_authenticated %}
+        <hr>
+        <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+        {% for comment in post.comments.all %}
+            <div class="comment" style="color:white;">
+                <div class="date" style="color:white;">
+                    {{ comment.created_date }}
+                <!--
+                    {% if not comment.approved_comment and user == post.author %}
+                        <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+                    {% endif %}
+                -->
+                </div>
+                <strong>{{ comment.author }}</strong>
+                <p>{{ comment.text|linebreaks }}</p><hr>
             </div>
-            <strong>{{ comment.author }}</strong>
-            <p>{{ comment.text|linebreaks }}</p><hr>
-        </div>
-    {% empty %}
-        <p style="color:white;">No comments here yet :(</p>
-    {% endfor %}
+        {% empty %}
+            <p style="color:white;">No comments here yet :(</p>
+        {% endfor %}
+    {% else %}
+        <p style="color:white;">Login or sign up to comment :)</p>
+    {% endif %}
 {% endblock %}
