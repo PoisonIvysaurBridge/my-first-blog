@@ -24,14 +24,24 @@ def post_sort(request):
             posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
         else:
             posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-        return render(request, 'blog/post_list.html', {'posts': posts})
-    else:
-        return render(request, 'blog/post_list.html', {'posts': posts})
-'''
-def post_filter(request,input):
-    posts = Post.objects.filter(input=title).order_by('-published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
-'''
+
+
+def post_filter(request):
+    posts=[]
+    
+    if request.method == "POST":
+        keyword = request.POST['filter'].upper()
+        unfiltered = Post.objects.all()
+        
+        for i in unfiltered:
+            if (i.author.username.upper().find(keyword) > -1 or 
+                i.title.upper().find(keyword) > -1 or
+                i.text.upper().find(keyword) > -1):
+                posts.append(i)
+           
+    return render(request, 'blog/post_list.html', {'posts': posts})
+
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})

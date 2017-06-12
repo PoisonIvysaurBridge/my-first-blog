@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^comment/(?P<pk>\d+)/approve/$', views.comment_approve, name='comment_approve'),
     url(r'^comment/(?P<pk>\d+)/remove/$', views.comment_remove, name='comment_remove'),
     url(r'^post/sort/$', views.post_sort, name='post_sort'),
-   # url(r'^post/filter/$', views.post_filter, name='filter_post_list'),
+    url(r'^post/filter/$', views.post_filter, name='post_filter'),
     
     #url(r'^$', views.index, name='index'),
 ]

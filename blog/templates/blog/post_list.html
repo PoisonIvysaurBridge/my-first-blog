@@ -2,7 +2,7 @@
 
 {% block content %}
     
-    <form action="{% url 'post_sort' %}" method="POST">
+    <form action="{% url 'post_sort' %}" method="POST" style="float:left;">
         {% csrf_token %}
         <select name="sort" style="border-radius: 20px; padding: 8px; font-size: 16;">
             <option value="default">Sort by</option>
@@ -13,51 +13,25 @@
         </select>
         <input type="submit" value="Go" style="border-radius:20px; margin:0 10px;padding:8px;color:mediumslateblue;">
     </form>
-<!-- SEARCH BAR
-	<form method="POST">
+<!-- SEARCH BAR-->
+	<form action="{% url 'post_filter' %}" method="POST">
         {% csrf_token %}
         <input class="button" type="submit"  value="Search" 
             style="border-radius:20px; margin:0 10px;padding:8px;color:mediumslateblue;float:right;">
-        <input type="text" id="myInput" onkeyup="filter()" placeholder="Search posts..." size="20" 
+        <input type="text" id="myInput" name="filter" placeholder="Search posts..." size="20" 
             style="border-radius: 20px; padding: 8px; font-size: 16;float:right;">
     </form>
--->
-    <div id="allPosts">
+    <br><br>
+    
     {% for post in posts %}
         <div class="post" id="{{post.pk}}">
             <p class="date">published: {{ post.published_date }}</p>
             <p class="date">posted by {{post.author}}</p>
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
+            <p>{{ post.text|truncatechars:200 }}</p>
             <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
         </div>
     {% endfor %}
-    </div>
+    
 {% endblock %}
 
-<script>
-
-function filter() {
-    
-  // Declare variables 
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("allPosts");
-  div = table.getElementsById("{{post.pk}}");
-  
-  if ({{post.author}} == filter)
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < div.length; i++) {
-    p = div[i].getElementsByTagName("p")[0];
-    if (p) {
-      if (p.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        div[i].style.display = "";
-      } else {
-        div[i].style.display = "none";
-      }
-    } 
-  }
-}
-	
-</script>
