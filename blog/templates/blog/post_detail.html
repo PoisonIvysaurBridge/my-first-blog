@@ -28,6 +28,9 @@
     {% if user.is_authenticated %}
         <hr>
         <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+    {% else %}
+        <p style="color:white;">Login or sign up to comment :)</p>
+    {% endif %}
         {% for comment in post.comments.all %}
             <div class="comment" style="color:white;">
                 <div class="date" style="color:white;">
@@ -45,7 +48,5 @@
         {% empty %}
             <p style="color:white;">No comments here yet :(</p>
         {% endfor %}
-    {% else %}
-        <p style="color:white;">Login or sign up to comment :)</p>
-    {% endif %}
+    
 {% endblock %}
